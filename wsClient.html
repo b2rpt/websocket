@@ -1,4 +1,16 @@
 <script>
-    let ws = new WebSocket('ws://localhost:8000');
-    console.log(ws);
+  let ws = new WebSocket("ws://localhost:8000");
+
+  console.log("ws", ws);
+
+  /**
+   * When the connection is established, we log the event and send a
+   * message to the server with a greeting.
+   * @param {Event} event - The onopen event.
+   * @listens ws#open
+   */
+  ws.onopen = (event) => {
+    console.log("Connected to server", event);
+    ws.send("Hello from client");
+  };
 </script>
